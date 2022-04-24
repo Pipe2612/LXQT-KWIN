@@ -1,0 +1,12 @@
+pamac remove openbox
+pamac remove compton picom
+pacman -Syu --needed - < $PWD/Packages-Desktop
+systemctl enable NetworkManager
+systemctl enable sddm
+systemctl enable firewalld
+cp -r $PWD/etc/. /etc/
+cp -r $PWD/usr/. /usr/
+cp -r $PWD/root/. /root/
+useradd -mUG lp,wheel,network,video USERNAME
+passwd USERNAME
+bash setup.sh username
